@@ -1,0 +1,70 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+/**
+  * $!{table.comment} 服务实现类
+  *
+  * @author ${author}
+  * @since ${date}
+  */
+@Service
+@Transactional
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+
+         @Autowired
+ private ${table.mapperName} ${table.entityPath}Mapper;
+
+         @Override
+ public Page<${entity}> selectPage(BootStrapTable<${entity}> bootStrapTable, ${entity} ${table.entityPath}){
+        LambdaQueryWrapper<${entity}> entityWrapper=new EntityWrapper<${entity}>();
+        getEntityWrapper(entityWrapper,${table.entityPath});
+        return super.selectPage(bootStrapTable.getPagePlus(),entityWrapper);
+        }
+
+         @Override
+ public List<${entity}> selectList(${entity} ${table.entityPath}){
+        LambdaQueryWrapper<${entity}> entityWrapper=new EntityWrapper<${entity}>();
+        getEntityWrapper(entityWrapper,${table.entityPath});
+        return super.selectList(entityWrapper);
+        }
+
+/**
+ *  公共查询条件
+ * @param entityWrapper
+ * @return
+ */
+    public LambdaQueryWrapper<${entity}> getEntityWrapper(LambdaQueryWrapper<${entity}> entityWrapper,${entity} ${table.entityPath}){
+//条件拼接
+    #foreach($field in ${table.fields})
+        #if(!${field.keyFlag})
+                if(StringUtils.isNotBlank(${table.entityPath}.get${field.capitalName}())){
+                entityWrapper.like(${entity}::get${field.capitalName},${table.entityPath}.get${field.capitalName}());
+                }
+        #end
+    #end
+        return entityWrapper;
+    }
+
+/**
+ * 通过用户ID查询用户
+ *
+ * @param userId 用户ID
+ * @return 用户对象信息
+ */
+@Override
+public SysUser selectUserById(Long userId)
+        {
+        return baseMapper.selectById(userId);
+        }
+}
