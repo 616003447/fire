@@ -1,4 +1,4 @@
-package com.mooding.admin.utils;
+package com.mooding.admin.utils.genertor;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;

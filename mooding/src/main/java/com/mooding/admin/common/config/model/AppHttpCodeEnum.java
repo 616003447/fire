@@ -7,6 +7,13 @@ public enum AppHttpCodeEnum {
     // 登录段1~50
     NEED_LOGIN(1,"需要登录后操作"),
     LOGIN_PASSWORD_ERROR(2,"密码错误"),
+    LOGIN_CAPTCHA_ERROR(3,"验证错误错误"),
+    LOGIN_NO_USER_ERROR(4,"用户不存在，请注册"),
+    LOGIN_USER_DEL_FLAG_ERROR(5,"用户已注销"),
+    LOGIN_USER_FREEZE_ERROR(6,"用户已冻结"),
+    LOGIN_RANDOM_IMAGE_ERROR(7,"获取验证码出错"),
+    LOGIN_MOBILE_NOT_EMPTY_ERROR(8,"手机号不允许为空！"),
+    LOGIN_MOBILE_SMS_FAIL_ERROR(9,"短信验证码发送失败,请稍后重试 "),
     // TOKEN50~100
     TOKEN_INVALID(50,"无效的TOKEN"),
     TOKEN_EXPIRE(51,"TOKEN已过期"),

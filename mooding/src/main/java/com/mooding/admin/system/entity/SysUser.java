@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -122,6 +123,12 @@ public class SysUser implements Serializable {
      * 备注
      */
     private  String remark;
+    /**
+     * md5密码盐(默认为12345678，后期可存在数据库中)
+     */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private transient String salt="12345678";
+
     private transient SysDept dept;
 
     /** 角色对象 */
@@ -133,42 +140,6 @@ public class SysUser implements Serializable {
     /** 岗位组 */
     private transient Long[] postIds;
 
-    public static final String USER_ID = "user_id";
 
-    public static final String DEPT_ID = "dept_id";
-
-    public static final String USER_NAME = "user_name";
-
-    public static final String NICK_NAME = "nick_name";
-
-    public static final String USER_TYPE = "user_type";
-
-    public static final String EMAIL = "email";
-
-    public static final String PHONENUMBER = "phonenumber";
-
-    public static final String SEX = "sex";
-
-    public static final String AVATAR = "avatar";
-
-    public static final String PASSWORD = "password";
-
-    public static final String STATUS = "status";
-
-    public static final String DEL_FLAG = "del_flag";
-
-    public static final String LOGIN_IP = "login_ip";
-
-    public static final String LOGIN_DATE = "login_date";
-
-    public static final String CREATE_BY = "create_by";
-
-    public static final String CREATE_TIME = "create_time";
-
-    public static final String UPDATE_BY = "update_by";
-
-    public static final String UPDATE_TIME = "update_time";
-
-    public static final String REMARK = "remark";
 
 }

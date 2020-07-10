@@ -2,6 +2,7 @@ package com.mooding.admin.common.config.mysql;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Profile;
  * @Author BlueFire
  * @Date 2020/7/4 -12:08
  */
+@Log
 @Configuration
 public class MyBatisPlusConfig {
     private final static Logger logger = LoggerFactory.getLogger(MyBatisPlusConfig.class);

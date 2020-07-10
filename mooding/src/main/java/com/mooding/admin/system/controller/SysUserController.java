@@ -26,7 +26,7 @@ public class SysUserController {
     private ISysUserService userService;
     @PostMapping("/getByUserName")
     public ResponseResult list(@RequestBody SysUser userDto)    {
-        SysUser user = userService.selectUserByUserName(userDto.getUserName());
+        SysUser user = userService.getOneUserByUser(userDto);
         return ResponseResult.okResult(user);
     }
 
