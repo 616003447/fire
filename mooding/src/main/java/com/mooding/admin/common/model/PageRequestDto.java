@@ -1,4 +1,4 @@
-package com.mooding.admin.common.config.model;
+package com.mooding.admin.common.model;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

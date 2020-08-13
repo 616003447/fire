@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  * @Date 2020/7/10 -7:20
  */
 @Slf4j
-public class ObejectConvertUtils {
+public class ObjectConvertUtils {
     //判断对象是否为空
     public static boolean isEmpty(Object object) {
         if (object == null) {

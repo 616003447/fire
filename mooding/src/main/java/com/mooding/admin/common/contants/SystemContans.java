@@ -19,8 +19,7 @@ public class SystemContans {
     public static final Integer USER_FREEZE = 2;
 
 
-    /** 登录用户Token令牌缓存KEY前缀 */
-    public static final String PREFIX_USER_TOKEN  = "prefix_user_token_";
+
 
     /**图片验证码基础字符*/
     public static final String RANDOM_IMAGE_BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
@@ -31,4 +30,29 @@ public class SystemContans {
     public static final String SMS_TPL_TYPE_0  = "0";
     public static final String SMS_TPL_TYPE_1  = "1";
     public static final String SMS_TPL_TYPE_2  = "2";
+
+    /**访问权限认证未通过 510*/
+    public static final Integer SC_JEECG_NO_AUTHZ=510;
+
+    /** 登录用户Shiro权限缓存KEY前缀 */
+    public static String PREFIX_USER_SHIRO_CACHE  = "shiro:cache:org.jeecg.modules.shiro.authc.ShiroRealm.authorizationCache:";
+    /** 登录用户Token令牌缓存KEY前缀 */
+    public static final String PREFIX_USER_TOKEN  = "prefix_user_token_";
+    /** Token缓存时间：3600秒即一小时 */
+    public static final int  TOKEN_EXPIRE_TIME  = 3600;
+
+    /**
+     * 数据权限配置缓存
+     */
+    public static final String SYS_DATA_PERMISSIONS_CACHE = "sys:cache:permission:datarules";
+
+    /**
+     * 缓存用户信息
+     */
+    public static final String SYS_USERS_CACHE = "sys:cache:user";
+
+    /**
+     * 全部部门信息缓存
+     */
+    public static final String SYS_DEPARTS_CACHE = "sys:cache:depart:alldata";
 }

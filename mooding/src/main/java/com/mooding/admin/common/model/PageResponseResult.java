@@ -1,4 +1,4 @@
-package com.mooding.admin.common.config.model;
+package com.mooding.admin.common.model;
 
 public class PageResponseResult extends ResponseResult {
     private Integer currentPage;

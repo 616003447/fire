@@ -1,4 +1,4 @@
-package com.mooding.admin.common.config.model;
+package com.mooding.admin.common.model;
 
 public enum AppHttpCodeEnum {
 

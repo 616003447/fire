@@ -1,37 +1,32 @@
-package com.mooding.admin.system.entity;
+package com.mooding.admin.system.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mooding.admin.system.entity.SysDept;
+import com.mooding.admin.system.entity.SysRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 
 /**
- * <p>
- * 用户信息表
- * </p>
- *
- * @author mooding 
- * @since 2020-07-04
+ * 在线用户信息
+ * @Author BlueFire
+ * @Date 2020/7/11 -9:54
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_sys_user")
-public class SysUser implements Serializable {
-
-    private static final long serialVersionUID=1L;
-
+public class LoginUserVo {
     /**
      * 用户ID
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
 
     /**
@@ -124,22 +119,23 @@ public class SysUser implements Serializable {
      */
     private  String remark;
     /**
-     * md5密码盐(默认为12345678，后期可存在数据库中)
+     * 生日
      */
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private transient String salt;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
 
-    private transient SysDept dept;
+
+    private  SysDept dept;
 
     /** 角色对象 */
-    private transient List<SysRole> roles;
+    private  List<SysRole> roles;
 
     /** 角色组 */
-    private transient Long[] roleIds;
+    private  Long[] roleIds;
 
     /** 岗位组 */
-    private transient Long[] postIds;
-
+    private  Long[] postIds;
 
 
 }

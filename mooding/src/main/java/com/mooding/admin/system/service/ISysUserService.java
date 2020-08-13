@@ -1,8 +1,12 @@
 package com.mooding.admin.system.service;
 
-import com.mooding.admin.common.config.model.ResponseResult;
+import com.mooding.admin.common.model.ResponseResult;
+import com.mooding.admin.system.entity.SysMenu;
 import com.mooding.admin.system.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -22,11 +26,32 @@ public interface ISysUserService extends IService<SysUser> {
     public SysUser getOneUserByUser(SysUser user);
 
     /**
+     * 通过用户id 查询用户
+     *
+     * @param userId 用户id
+     * @return 用户对象信息
+     */
+    public SysUser getUserById(Long userId);
+
+    /**
      * 校验用户是否有效
      * @param sysUser
      * @return
      */
     public ResponseResult checkUserIsEffective(SysUser sysUser);
 
-
+    /**
+     * 通过用户名获取用户角色集合
+     *
+     * @param username 用户名
+     * @return 角色集合
+     */
+    Set<String> getUserRolesSet(String username);
+    /**
+     * 通过用户名获取用户权限集合
+     *
+     * @param username 用户名
+     * @return 权限集合
+     */
+    Set<SysMenu> getUserMenuSet(String username);
 }

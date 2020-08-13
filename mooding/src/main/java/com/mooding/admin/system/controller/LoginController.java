@@ -3,13 +3,13 @@ package com.mooding.admin.system.controller;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONObject;
 import com.aliyuncs.exceptions.ClientException;
-import com.mooding.admin.common.config.model.AppHttpCodeEnum;
-import com.mooding.admin.common.config.model.ResponseResult;
+import com.mooding.admin.common.model.AppHttpCodeEnum;
+import com.mooding.admin.common.model.ResponseResult;
 import com.mooding.admin.common.contants.SystemContans;
 import com.mooding.admin.system.entity.SysUser;
 import com.mooding.admin.system.model.SysLoginModel;
 import com.mooding.admin.system.service.ISysUserService;
-import com.mooding.admin.utils.ObejectConvertUtils;
+import com.mooding.admin.utils.ObjectConvertUtils;
 import com.mooding.admin.utils.cache.RedisUtil;
 import com.mooding.admin.utils.security.*;
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +61,7 @@ public class LoginController {
         }
 
         //4. 校验用户名或密码是否正确
-        String userpassword = PasswordUtil.encrypt(username, password, sysUser.getSalt());
+        String userpassword = PasswordUtil.encrypt(username, password, "12345678"/*sysUser.getSalt()*/);
         String syspassword = sysUser.getPassword();
         if (!syspassword.equals(userpassword)) {
             return ResponseResult.errorResult(AppHttpCodeEnum.LOGIN_PASSWORD_ERROR);
@@ -115,7 +115,7 @@ public class LoginController {
         //手机号模式 登录模式: "2"  注册模式: "1"
         String smsmode = jsonObject.get("smsmode").toString();
         log.info(mobile);
-        if (ObejectConvertUtils.isEmpty(mobile)) {
+        if (ObjectConvertUtils.isEmpty(mobile)) {
             return ResponseResult.errorResult(AppHttpCodeEnum.LOGIN_MOBILE_NOT_EMPTY_ERROR);
         }
         Object object = redisUtil.get(mobile);
@@ -209,4 +209,26 @@ public class LoginController {
 
         return result;
     }
+
+    /**
+     * 获取用户信息
+     *
+     * @return 用户信息
+     */
+    @GetMapping("getInfo")
+    public ResponseResult getInfo()
+    {
+        /*LoginUser loginUser = tokenService.getLoginUser(ServletUtils.getRequest());
+        SysUser user = loginUser.getUser();
+        // 角色集合
+        Set<String> roles = permissionService.getRolePermission(user);
+        // 权限集合
+        Set<String> permissions = permissionService.getMenuPermission(user);
+        AjaxResult ajax = AjaxResult.success();
+        ajax.put("user", user);
+        ajax.put("roles", roles);
+        ajax.put("permissions", permissions);*/
+        return ResponseResult.okResult("111");
+    }
+
 }

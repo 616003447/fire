@@ -32,7 +32,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with,access_token");
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        log.debug("*********************************过滤器被使用:" + ((HttpServletRequest) servletRequest).getRequestURL().toString() + "**************************");
+        log.info("*********************************过滤器被使用:" + ((HttpServletRequest) servletRequest).getRequestURL().toString() + "**************************");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

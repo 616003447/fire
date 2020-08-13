@@ -113,3 +113,8 @@ mybatis-plus:
     jdbc-type-for-null: null
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+
+#mooding专用配置
+mooding :
+  shiro:
+    excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**
